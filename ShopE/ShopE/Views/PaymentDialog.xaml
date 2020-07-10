@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="ShopE.Views.PaymentDialog"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    VerticalOptions="Center"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <StackLayout>
+            <Frame
+                Margin="10"
+                Padding="8"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="5">
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <Label
+                        FontFamily="{StaticResource ShabnameBold}"
+                        FontSize="16"
+                        Text="{Binding PriceWOff, StringFormat='{0:N0} تومان'}"
+                        TextColor="#444" />
+                    <Label
+                        FontFamily="{StaticResource Shabname}"
+                        Text="{Binding Name}"
+                        TextColor="#444" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Margin="10"
+                Padding="8"
+                BackgroundColor="White"
+                CornerRadius="5">
+                <Entry
+                    x:Name="nameEntry"
+                    FontFamily="{StaticResource Shabname}"
+                    FontSize="13"
+                    Placeholder="نام شما" />
+            </Frame>
+            <Frame
+                Margin="10,0,10,10"
+                Padding="8"
+                BackgroundColor="White"
+                CornerRadius="5">
+                <Entry
+                    x:Name="phoenEntry"
+                    FontFamily="{StaticResource Shabname}"
+                    FontSize="13"
+                    Keyboard="Numeric"
+                    Placeholder="شماره همراه شما" />
+            </Frame>
+            <Button
+                Margin="10,0"
+                BackgroundColor="{StaticResource Success}"
+                Clicked="SubmitButton_OnClicked"
+                FontFamily="{StaticResource Shabname}"
+                FontSize="14"
+                Text="ثبت و خرید"
+                TextColor="White" />
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

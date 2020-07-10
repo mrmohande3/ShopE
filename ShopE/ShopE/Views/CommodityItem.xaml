@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="ShopE.Views.CommodityItem"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controllers="clr-namespace:ShopE.Views.Controllers;assembly=ShopE"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:ShopE.Models;assembly=ShopE"
+    FlowDirection="RightToLeft"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    mc:Ignorable="d">
+
+    <ContentView.Content>
+        <Grid
+            Margin="20,0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid
+                HeightRequest="290"
+                HorizontalOptions="Center"
+                WidthRequest="220">
+                <Frame
+                    Margin="4"
+                    Padding="0"
+                    BackgroundColor="White"
+                    CornerRadius="8"
+                    HasShadow="True"
+                    HeightRequest="290"
+                    WidthRequest="220">
+                    <Grid>
+
+                        <forms:CachedImage Aspect="AspectFill" Source="{Binding Path=Photo}" />
+                        <Grid
+                            Padding="8"
+                            BackgroundColor="#60000000"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill">
+                            <StackLayout HorizontalOptions="Start" VerticalOptions="End">
+                                <Label
+                                    Margin="0"
+                                    FontFamily="{StaticResource ShabnameBold}"
+                                    FontSize="18"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource Primary}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontFamily="{StaticResource ShabnameBold}"
+                                    FontSize="16"
+                                    HorizontalOptions="End"
+                                    Text="{Binding Path=Price, StringFormat='{0:N} تومان'}"
+                                    TextColor="{StaticResource PrimaryDark}" />
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </Frame>
+            </Grid>
+            <Frame
+                Grid.Row="2"
+                Padding="0"
+                BackgroundColor="{StaticResource Info}"
+                CornerRadius="8">
+
+                <StackLayout
+                    Margin="0,10"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+
+                    <Label
+                        FontSize="20"
+                        Text="{Binding Path=Store.PhoneNumber}"
+                        TextColor="White" />
+                    <Label
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="25"
+                        Text="{x:Static model:MaterialIconFont.Phone}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                Padding="0"
+                BackgroundColor="{StaticResource Warning}"
+                CornerRadius="8">
+
+                <StackLayout
+                    Margin="0,10"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+
+                    <Label
+                        FontFamily="{StaticResource Shabname}"
+                        FontSize="20"
+                        Text="{Binding Path=Store.Name}"
+                        TextColor="White" />
+                    <Label
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="25"
+                        Text="{x:Static model:MaterialIconFont.Account}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Grid.Row="4"
+                Padding="0"
+                BackgroundColor="{StaticResource Success}"
+                CornerRadius="8">
+
+                <StackLayout
+                    Margin="0,10"
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+
+                    <Label
+                        FontFamily="{StaticResource Shabname}"
+                        FontSize="20"
+                        Text="خرید محصول"
+                        TextColor="White" />
+                    <Label
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="25"
+                        HorizontalOptions="End"
+                        Text="{x:Static model:MaterialIconFont.Shopping}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BuyProduct_OnTapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

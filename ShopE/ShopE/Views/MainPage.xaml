@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ShopE.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controllers="clr-namespace:ShopE.Views.Controllers;assembly=ShopE"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:models="clr-namespace:ShopE.Models;"
+    Title="{Binding Title}"
+    FlowDirection="RightToLeft"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <Frame
+            Grid.Row="0"
+            Margin="0,-30,0,0"
+            Padding="0,0,0,0"
+            BackgroundColor="White"
+            CornerRadius="35">
+            <controllers:GradientViewRender
+                Margin="0"
+                Padding="25,35,25,15"
+                EndColor="{StaticResource PrimaryDark}"
+                Opacity="1"
+                Orientation="Horizontal"
+                StartColor="{StaticResource Primary}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="1">
+                        <Grid>
+                            <Label
+                                FontFamily="{StaticResource ShabnameBold}"
+                                FontSize="18"
+                                HorizontalOptions="Start"
+                                Text="فروشگاه انلاین مــــن"
+                                TextColor="Accent"
+                                VerticalOptions="Center" />
+                            <Button
+                                x:Name="searchButton"
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                Clicked="SearchButton_OnClicked"
+                                FontFamily="{StaticResource FontAwsomeFontFamily}"
+                                FontSize="25"
+                                HorizontalOptions="End"
+                                Text="{x:Static models:FaIconFont.Search}"
+                                TextColor="Accent"
+                                VerticalOptions="Center"
+                                WidthRequest="40" />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </controllers:GradientViewRender>
+        </Frame>
+
+        <ScrollView Grid.Row="3" Margin="8,0">
+            <FlexLayout
+                x:Name="mainList"
+                AlignContent="Start"
+                BindableLayout.ItemsSource="{Binding .}"
+                HorizontalOptions="Center"
+                JustifyContent="Center"
+                VerticalOptions="Fill"
+                Wrap="Wrap">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="220" WidthRequest="160">
+                            <Frame
+                                Margin="4"
+                                Padding="0"
+                                BackgroundColor="White"
+                                CornerRadius="8"
+                                HasShadow="True"
+                                HeightRequest="220"
+                                WidthRequest="160">
+                                <Grid>
+
+                                    <forms:CachedImage Aspect="AspectFill" Source="{Binding Path=Photo}" />
+                                    <Grid
+                                        Padding="8"
+                                        BackgroundColor="#60000000"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                        <StackLayout HorizontalOptions="Start" VerticalOptions="End">
+                                            <Label
+                                                Margin="0"
+                                                FontFamily="{StaticResource ShabnameBold}"
+                                                FontSize="18"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding Name}"
+                                                TextColor="{StaticResource Primary}"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                FontFamily="{StaticResource ShabnameBold}"
+                                                FontSize="16"
+                                                HorizontalOptions="End"
+                                                Text="{Binding Path=Price, StringFormat='{0:N0} تومان'}"
+                                                TextColor="{StaticResource PrimaryDark}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
+
+
+    </Grid>
+
+</ContentPage>
