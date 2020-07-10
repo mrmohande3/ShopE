@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ShopEAdmin.Views.SignUpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    NavigationPage.HasNavigationBar="False">
+    <Grid BackgroundColor="{StaticResource PrimaryDark}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" VerticalOptions="Center">
+            <Label
+                FontSize="40"
+                HorizontalOptions="Center"
+                Text="ShopE"
+                TextColor="White" />
+        </StackLayout>
+        <StackLayout Grid.Row="1" BackgroundColor="AliceBlue" />
+        <StackLayout
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            VerticalOptions="Center">
+            <Frame
+                Margin="50,50,50,0"
+                Padding="20"
+                CornerRadius="8"
+                HeightRequest="320"
+                VerticalOptions="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+                        <Label
+                            Margin="0,15"
+                            FontFamily="{StaticResource Shabname}"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="ثبت نام" />
+                        <Entry
+                            x:Name="nameEntry"
+                            Margin="0,5"
+                            FontFamily="{StaticResource Shabname}"
+                            FontSize="14"
+                            Placeholder="نام مغازه شما"
+                            PlaceholderColor="{StaticResource PrimaryDark}" />
+                        <Entry
+                            x:Name="phoneEntry"
+                            Margin="0,5"
+                            FontFamily="{StaticResource Shabname}"
+                            FontSize="14"
+                            Placeholder="شماره تلفن مغازه شما"
+                            PlaceholderColor="{StaticResource PrimaryDark}" />
+                        <Entry
+                            x:Name="userNameEntry"
+                            Margin="0,5"
+                            FontFamily="{StaticResource Shabname}"
+                            FontSize="14"
+                            Placeholder="نام کاربری"
+                            PlaceholderColor="{StaticResource PrimaryDark}" />
+                        <Entry
+                            x:Name="passwordEntry"
+                            Margin="0,5"
+                            FontFamily="{StaticResource Shabname}"
+                            FontSize="14"
+                            Placeholder="رمز عبور"
+                            PlaceholderColor="{StaticResource PrimaryDark}" />
+
+                    </StackLayout>
+                </Grid>
+
+            </Frame>
+            <Button
+                Margin="0,-30,0,0"
+                BackgroundColor="{StaticResource PrimaryDark}"
+                Clicked="SugnUpButton_OnClicked"
+                CornerRadius="25"
+                FontFamily="{StaticResource ShabnameBold}"
+                HeightRequest="45"
+                HorizontalOptions="Center"
+                Text="ثبت نام"
+                TextColor="White"
+                VerticalOptions="Start"
+                WidthRequest="210" />
+            <Button
+                BackgroundColor="Transparent"
+                Clicked="LoginButton_OnClicked"
+                CornerRadius="25"
+                FontFamily="{StaticResource ShabnameBold}"
+                HeightRequest="45"
+                HorizontalOptions="Center"
+                Text="ورود"
+                TextColor="{StaticResource PrimaryDark}"
+                VerticalOptions="Start"
+                WidthRequest="210" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

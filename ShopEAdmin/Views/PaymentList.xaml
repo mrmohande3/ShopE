@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="ShopEAdmin.Views.PaymentList"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Margin="20,50"
+    FlowDirection="RightToLeft"
+    VerticalOptions="Center"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <CollectionView ItemsSource="{Binding .}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="160" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Frame
+                            Margin="5"
+                            Padding="8"
+                            BackgroundColor="{StaticResource Primary}"
+                            CornerRadius="8">
+                            <StackLayout>
+                                <Label
+                                    FontFamily="{StaticResource ShabnameBold}"
+                                    FontSize="16"
+                                    Text="{Binding CustomerName}" />
+                                <Label
+                                    FontFamily="{StaticResource Shabname}"
+                                    FontSize="16"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding CustomerPhoneNumber}" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            Grid.Column="1"
+                            Margin="0,0,-15,0"
+                            Padding="8"
+                            BackgroundColor="White"
+                            CornerRadius="8">
+                            <StackLayout VerticalOptions="Center">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontFamily="{StaticResource ShabnameBold}"
+                                        FontSize="16"
+                                        HorizontalOptions="Start"
+                                        Text="نام کالا : "
+                                        TextColor="#444" />
+                                    <Label
+                                        FontFamily="{StaticResource ShabnameBold}"
+                                        FontSize="16"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Path=Commodity.Name}"
+                                        TextColor="#444" />
+                                </StackLayout>
+                                <Label
+                                    FontFamily="{StaticResource Shabname}"
+                                    FontSize="16"
+                                    Text="{Binding Path=Commodity.PriceWOff, StringFormat='قیمت :  {0:N0} تومان'}"
+                                    TextColor="#444" />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentView.Content>
+</ContentView>

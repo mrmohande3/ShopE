@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ShopEAdmin.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controllers="clr-namespace:ShopEAdmin.Views.Controllers;assembly=ShopEAdmin"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:model="clr-namespace:ShopEAdmin.Models;"
+    Title="{Binding Title}"
+    FlowDirection="RightToLeft"
+    NavigationPage.HasNavigationBar="False">
+    <Grid Padding="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Frame
+                Grid.Column="0"
+                Padding="8"
+                BackgroundColor="{StaticResource PrimaryDark}"
+                CornerRadius="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        Margin="8,0,5,0"
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="45"
+                        Text="{x:Static model:MaterialIconFont.Sale}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontFamily="{StaticResource ShabnameBold}"
+                        FontSize="16"
+                        Text="فروش کل"
+                        TextColor="White" />
+                    <Label
+                        x:Name="paymentTotal"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontFamily="{StaticResource Shabname}"
+                        FontSize="13"
+                        TextColor="White" />
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame
+                Grid.Column="1"
+                Padding="8"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Grid.Column="0"
+                        Margin="8,0,5,0"
+                        FontFamily="{StaticResource MaterialFontFamily}"
+                        FontSize="45"
+                        Text="{x:Static model:MaterialIconFont.Counter}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        FontFamily="{StaticResource ShabnameBold}"
+                        FontSize="16"
+                        Text="تعداد فروش"
+                        TextColor="White" />
+                    <Label
+                        x:Name="paymentCount"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontFamily="{StaticResource Shabname}"
+                        FontSize="13"
+                        Text="256"
+                        TextColor="White" />
+                </Grid>
+            </Frame>
+
+
+
+
+        </Grid>
+
+
+        <Label
+            Grid.Row="2"
+            Margin="15,5"
+            FontAttributes="Bold"
+            FontFamily="{StaticResource ShabnameBold}"
+            FontSize="16"
+            Text="جدیدترین محصولات"
+            VerticalOptions="Center" />
+
+
+        <ScrollView Grid.Row="3">
+            <FlexLayout
+                x:Name="mainList"
+                AlignContent="Start"
+                BindableLayout.ItemsSource="{Binding .}"
+                HorizontalOptions="Center"
+                JustifyContent="Center"
+                VerticalOptions="Fill"
+                Wrap="Wrap">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="220" WidthRequest="160">
+                            <Frame
+                                Margin="4"
+                                Padding="0"
+                                BackgroundColor="White"
+                                CornerRadius="8"
+                                HasShadow="True"
+                                HeightRequest="220"
+                                WidthRequest="160">
+                                <Grid>
+
+                                    <forms:CachedImage Aspect="AspectFill" Source="{Binding Path=Photo}" />
+                                    <Grid
+                                        Padding="8"
+                                        BackgroundColor="#60000000"
+                                        HorizontalOptions="Fill"
+                                        VerticalOptions="Fill">
+                                        <StackLayout HorizontalOptions="Start" VerticalOptions="End">
+                                            <Label
+                                                Margin="0"
+                                                FontFamily="{StaticResource ShabnameBold}"
+                                                FontSize="18"
+                                                HorizontalOptions="Start"
+                                                Text="{Binding Name}"
+                                                TextColor="White"
+                                                VerticalOptions="Center" />
+                                            <Label
+                                                FontFamily="{StaticResource ShabnameBold}"
+                                                FontSize="16"
+                                                HorizontalOptions="End"
+                                                Text="{Binding Path=Price, StringFormat='{0:N} تومان'}"
+                                                TextColor="White" />
+                                        </StackLayout>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
+        <Button
+            Grid.Row="0"
+            Grid.RowSpan="4"
+            Margin="10"
+            Padding="0"
+            BackgroundColor="{StaticResource Primary}"
+            Clicked="AddProduct_OnTapped"
+            CornerRadius="25"
+            FontFamily="{StaticResource MaterialFontFamily}"
+            FontSize="30"
+            HeightRequest="50"
+            HorizontalOptions="Start"
+            Text="{x:Static model:MaterialIconFont.Plus}"
+            TextColor="White"
+            VerticalOptions="End"
+            WidthRequest="50" />
+    </Grid>
+
+</ContentPage>
+
+<!--<Frame Padding="5,25,5,10" CornerRadius="8">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <forms:CachedImage
+                                    Margin="8"
+                                    Aspect="AspectFit"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding Photo}"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    Grid.Row="1"
+                                    FontFamily="{StaticResource ShabnameBold}"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Name}" />
+                                <StackLayout
+                                    Grid.Row="2"
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        FontSize="20"
+                                        Text="{Binding Price}"
+                                        TextColor="{StaticResource PrimaryDark}" />
+                                    <Label
+                                        FontFamily="{StaticResource Shabname}"
+                                        FontSize="12"
+                                        Text="تومان"
+                                        VerticalOptions="End" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+
+                        <Frame
+                            Margin="10,-5,10,0"
+                            Padding="15,3"
+                            BackgroundColor="{StaticResource Info}"
+                            CornerRadius="5"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Start">
+                            <Label
+                                FontFamily="{StaticResource Shabname}"
+                                FontSize="10"
+                                Text="مغازه اقای مرادی"
+                                TextColor="White" />
+                        </Frame>-->

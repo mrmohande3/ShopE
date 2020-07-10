@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="ShopEAdmin.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms">
+    <Application.Resources>
+
+        <Color x:Key="Primary">#f7b61e</Color>
+        <Color x:Key="PrimaryDark">#F7971E</Color>
+        <Color x:Key="PrimaryLight">#F2F2F2</Color>
+        <Color x:Key="Info">#3399FF</Color>
+        <Color x:Key="Success">#27ae60</Color>
+        <Color x:Key="Warning">#F49515</Color>
+        <Color x:Key="Danger">#FF4139</Color>
+
+
+
+
+        <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="Material Design Icons" />
+            <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+            <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
+        </OnPlatform>
+        <OnPlatform x:Key="FontAwsomeFontFamily" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="Font Awesome 5 Pro Reqular" />
+            <On Platform="Android" Value="fa-regular-400.ttf#Font Awesome 5 Pro Reqular" />
+            <On Platform="UWP" Value="Assets/Fonts/fa-regular-400.ttf#Font Awesome 5 Pro Reqular" />
+        </OnPlatform>
+        <OnPlatform x:Key="IranSansULight" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="IRANSans UltraLight" />
+            <On Platform="Android" Value="IRANSANS_ULTRALIGHT_0.TTF#IRANSans UltraLight" />
+            <On Platform="UWP" Value="IRANSANS_ULTRALIGHT_0.TTF" />
+        </OnPlatform>
+        <OnPlatform x:Key="IranSansMedium" x:TypeArguments="x:String">
+            <On Platform="iOS" Value="IRANSans Medium" />
+            <On Platform="Android" Value="IRANSANS_MEDIUM_0.TTF#IRANSans Medium" />
+            <On Platform="UWP" Value="IRANSANS_MEDIUM_0.TTF#IRANSans Medium" />
+        </OnPlatform>
+        <OnPlatform x:Key="IranSansBlack" x:TypeArguments="x:String">
+            <On Platform="Android" Value="IRANSANS_BLACK.TTF#IRANSans Black" />
+        </OnPlatform>
+
+        <OnPlatform x:Key="Shabname" x:TypeArguments="x:String">
+            <On Platform="Android" Value="Shabnam.ttf#Shabnam" />
+        </OnPlatform>
+        <OnPlatform x:Key="ShabnameBold" x:TypeArguments="x:String">
+            <On Platform="Android" Value="Shabnam-Bold.ttf#Shabnam-Bold" />
+        </OnPlatform>
+
+    </Application.Resources>
+</prism:PrismApplication>
